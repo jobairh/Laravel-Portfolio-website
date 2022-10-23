@@ -21,6 +21,9 @@
 @yield('content')
 
 
+
+</div>
+</div>
 <script type="text/javascript" src="{{ asset('adminAsset') }}/js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="{{ asset('adminAsset') }}/js/popper.min.js"></script>
 <script type="text/javascript" src="{{ asset('adminAsset') }}/js/bootstrap.js"></script>
