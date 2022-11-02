@@ -36,5 +36,9 @@
 <script type="text/javascript" src="{{ asset('adminAsset') }}/js/datatables-select.min.js"></script>
 <script type="text/javascript" src="{{ asset('adminAsset') }}/js/custom.js"></script>
 <script type="text/javascript" src="{{ asset('adminAsset') }}/js/axios.min.js"></script>
+
+
+@yield('script')
+
 </body>
 </html>
