@@ -10,3 +10,4 @@ Route::get('/',[HomeController::class,'index'])->name('/');
 Route::get('/visitor',[VisitorController::class,'visitorIndex'])->name('visitor');
 Route::get('/service',[ServiceController::class,'serviceIndex'])->name('service');
 Route::get('/getServicesData',[ServiceController::class,'getServiceData'])->name('getServicesData');
+Route::get('/serviceDelete',[ServiceController::class,'serviceDelete'])->name('serviceDelete');

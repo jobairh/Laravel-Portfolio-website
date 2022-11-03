@@ -15,4 +15,8 @@ class ServiceController extends Controller
         $result=json_encode(ServicesModel::all());
         return $result;
     }
+
+    public function serviceDelete(){
+        return "text";
+    }
 }
