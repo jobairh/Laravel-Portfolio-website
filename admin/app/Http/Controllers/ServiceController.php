@@ -16,7 +16,14 @@ class ServiceController extends Controller
         return $result;
     }
 
-    public function serviceDelete(){
-        return "text";
+    public function serviceDelete(Request $request){
+        $id=$request->input('id');
+        $result=ServicesModel::where('id','=',$id)->delete();
+        if ($result==true){
+            return 1;
+        }
+        else{
+            return 0;
+        }
     }
 }
