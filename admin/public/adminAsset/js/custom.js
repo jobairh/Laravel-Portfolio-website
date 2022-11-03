@@ -14,6 +14,8 @@ $('.dataTables_length').addClass('bs-select');
             $('#mainDiv').removeClass('d-none');
             $('#loaderDiv').addClass('d-none');
 
+            $('#service_table').empty();
+
             let jsonData=response.data;
 
             $.each(jsonData,function (i,item) {
@@ -29,19 +31,19 @@ $('.dataTables_length').addClass('bs-select');
             $('.serviceDeleteBtn').click(function () {
                 let id=$(this).data('id');
 
-                $('#serviceDeleteConfirmBtn').attr('data-id',id);
+                $('#serviceDeleteId').html(id);
                 $('#deleteModal').modal('show');
             })
 
 
 
             $('#serviceDeleteConfirmBtn').click(function () {
-                let id=$(this).data('id');
+                let id=$('#serviceDeleteId').html();
                 getServicesDelete(id);
             })
         }
 
-        
+
         else {
 
             $('#wrongDiv').removeClass('d-none');
@@ -63,10 +65,14 @@ function getServicesDelete(deleteId) {
     axios.post('/serviceDelete',{id:deleteId})
     .then(function (response) {
         if (response.data===1){
-            alert('success');
+            $('#deleteModal').modal('hide');
+            toastr.success('Delete Success  ');
+            getServicesData();
         }
         else {
-            alert('fail');
+            $('#deleteModal').modal('hide');
+            toastr.error('Delete Fail');
+            getServicesData();
         }
     })
         .catch(function (error) {
