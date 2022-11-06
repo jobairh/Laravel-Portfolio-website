@@ -23,9 +23,24 @@ class ServiceController extends Controller
         return $result;
     }
 
-    public function serviceDelete(Request $request){
+    public function getServiceDelete(Request $request){
         $id=$request->input('id');
         $result=ServicesModel::where('id','=',$id)->delete();
+        if ($result==true){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    }
+
+    public function getServiceUpdate(Request $request){
+        $id=$request->input('id');
+        $name=$request->input('name');
+        $desc=$request->input('desc');
+        $img=$request->input('img');
+
+        $result=ServicesModel::where('id','=',$id)->update(['service_name'=>$name, 'service_description'=>$desc,'service_image'=>$img]);
         if ($result==true){
             return 1;
         }

@@ -63,17 +63,28 @@
 
                     <h5 id="serviceEditId" class="mt-4"></h5>
 
-                    <div class="form-outline mb-4">
-                            <input type="text" id="" class="form-control" placeholder="Service Name"/>
+                    <div id="serviceEditForm" class="d-none w-100">
+
+                        <div class="form-outline mb-4 text-left">
+                            <label class="form-label" for="form5Example1">Service Name:</label>
+                            <input type="text" id="serviceNameId" class="form-control" placeholder="Service Name"/>
                         </div>
 
-                        <div class="form-outline mb-4">
-                            <input type="text" id="" class="form-control" placeholder="Service Description"/>
+                        <div class="form-outline mb-4 text-left">
+                            <label class="form-label" for="form5Example1">Service Description:</label>
+                            <input type="text" id="serviceDescId" class="form-control" placeholder="Service Description"/>
                         </div>
 
-                    <div class="form-outline mb-4">
-                            <input type="text" id="" class="form-control" placeholder="Service Image Link"/>
+                        <div class="form-outline mb-4 text-left">
+                            <label class="form-label" for="form5Example1">Service Image Link:</label>
+                            <input type="text" id="serviceImgId" class="form-control" placeholder="Service Image Link"/>
                         </div>
+
+                    </div>
+
+                    <img id="serviceEditLoader" class="loading_icon m-5" src="{{ asset('adminAsset') }}/images/loader.svg" alt="">
+                    <h5 id="serviceEditWrong" class="d-none">Something went wrong!!</h5>
+
 
                 </div>
                 <div class="modal-footer">
