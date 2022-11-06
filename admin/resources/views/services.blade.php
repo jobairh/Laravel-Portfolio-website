@@ -56,6 +56,34 @@
         </div>
     </div>
 
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body p-5 text-center">
+
+                    <h5 id="serviceEditId" class="mt-4"></h5>
+
+                    <div class="form-outline mb-4">
+                            <input type="text" id="" class="form-control" placeholder="Service Name"/>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="text" id="" class="form-control" placeholder="Service Description"/>
+                        </div>
+
+                    <div class="form-outline mb-4">
+                            <input type="text" id="" class="form-control" placeholder="Service Image Link"/>
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Cancel</button>
+                    <button id="serviceEditConfirmBtn" type="button" class="btn btn-sm btn-danger">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
 @endsection

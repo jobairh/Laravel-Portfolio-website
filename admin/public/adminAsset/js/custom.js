@@ -25,7 +25,7 @@ function getServicesData() {
                         "<td><img class='table-img' src=" + jsonData[i].service_image + "></td>" +
                         "<td>" + jsonData[i].service_name + "</td>" +
                         "<td>" + jsonData[i].service_description + "</td>" +
-                        "<td><a href='' ><i class='fas fa-edit'></i></a> </td>" +
+                        "<td><a class='serviceEditBtn' data-id=" + jsonData[i].id + " ><i class='fas fa-edit'></i></a> </td>" +
                         "<td><a class='serviceDeleteBtn' data-id=" + jsonData[i].id + " ><i class='fas fa-trash-alt'></i></a> </td>"
                     ).appendTo('#service_table');
                 });
@@ -41,8 +41,18 @@ function getServicesData() {
                 // Services Delete Modal Yes Btn
                 $('#serviceDeleteConfirmBtn').click(function() {
                     let id = $('#serviceDeleteId').html();
-                    getServicesDelete(id);
+                    serviceDelete(id);
                 })
+
+                // Services Table Edit icon click
+                $('.serviceEditBtn').click(function() {
+                    let id = $(this).data('id');
+
+                    $('#serviceEditId').html(id);
+                    $('#editModal').modal('show');
+                })
+
+
             } else {
 
                 $('#wrongDiv').removeClass('d-none');
@@ -61,7 +71,7 @@ function getServicesData() {
 }
 
 // Services Delete
-function getServicesDelete(deleteId) {
+function serviceDelete(deleteId) {
     axios.post('/serviceDelete', {
         id: deleteId
     })
@@ -75,6 +85,19 @@ function getServicesDelete(deleteId) {
                 toastr.error('Delete Fail');
                 getServicesData();
             }
+        })
+        .catch(function(error) {
+
+        })
+}
+
+// Each Service Update Details
+function serviceUpdateDetails(detailsId) {
+    axios.post('/serviceDetails', {
+        id: detailsId
+    })
+        .then(function(response) {
+
         })
         .catch(function(error) {
 
