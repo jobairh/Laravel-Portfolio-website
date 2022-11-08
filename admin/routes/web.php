@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\VisitorController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\CoursesController;
 
 
 Route::get('/',[HomeController::class,'index'])->name('/');
@@ -18,4 +19,12 @@ Route::post('/serviceDelete',[ServiceController::class,'getServiceDelete'])->nam
 Route::post('/serviceDetails',[ServiceController::class,'getServiceDetails'])->name('serviceDetails');
 Route::post('/serviceUpdate',[ServiceController::class,'getServiceUpdate'])->name('serviceUpdate');
 Route::post('/serviceAdd',[ServiceController::class,'getServiceAdd'])->name('serviceAdd');
+
+// Admin Panel Courses Management
+Route::get('/courses',[CoursesController::class,'coursesIndex'])->name('courses');
+Route::get('/getCoursesData',[CoursesController::class,'getCoursesData'])->name('getCoursesData');
+Route::post('/CoursesDelete',[CoursesController::class,'getCoursesDelete'])->name('CoursesDelete');
+Route::post('/CoursesDetails',[CoursesController::class,'getCoursesDetails'])->name('CoursesDetails');
+Route::post('/CoursesUpdate',[CoursesController::class,'getCoursesUpdate'])->name('CoursesUpdate');
+Route::post('/CoursesAdd',[CoursesController::class,'getCoursesAdd'])->name('CoursesAdd');
 
