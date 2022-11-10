@@ -23,8 +23,8 @@ Route::post('/serviceAdd',[ServiceController::class,'getServiceAdd'])->name('ser
 // Admin Panel Courses Management
 Route::get('/courses',[CoursesController::class,'coursesIndex'])->name('courses');
 Route::get('/getCoursesData',[CoursesController::class,'getCoursesData'])->name('getCoursesData');
-Route::post('/CoursesDelete',[CoursesController::class,'getCoursesDelete'])->name('CoursesDelete');
-Route::post('/CoursesDetails',[CoursesController::class,'getCoursesDetails'])->name('CoursesDetails');
-Route::post('/CoursesUpdate',[CoursesController::class,'getCoursesUpdate'])->name('CoursesUpdate');
-Route::post('/CoursesAdd',[CoursesController::class,'getCoursesAdd'])->name('CoursesAdd');
+Route::post('/coursesDelete',[CoursesController::class,'getCoursesDelete'])->name('coursesDelete');
+Route::post('/coursesDetails',[CoursesController::class,'getCoursesDetails'])->name('coursesDetails');
+Route::post('/coursesUpdate',[CoursesController::class,'getCoursesUpdate'])->name('coursesUpdate');
+Route::post('/coursesAdd',[CoursesController::class,'getCoursesAdd'])->name('coursesAdd');
 
