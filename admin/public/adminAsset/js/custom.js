@@ -20,8 +20,6 @@ function getCoursesData() {
                         "<td>" + jsonData[i].course_total_class + "</td>" +
                         "<td>" + jsonData[i].course_total_enroll + "</td>" +
 
-                        "<td><a class='courseViewDetailsBtn' data-id=" + jsonData[i].id + " ><i class='fas fa-eye'></i></a> </td>" +
-
                         "<td><a class='courseEditBtn' data-id=" + jsonData[i].id + " ><i class='fas fa-edit'></i></a> </td>" +
 
                         "<td><a class='courseDeleteBtn' data-id=" + jsonData[i].id + " ><i class='fas fa-trash-alt'></i></a> </td>"
@@ -208,5 +206,83 @@ function courseUpdateDetails(detailsId) {
             $('#courseEditWrong').removeClass('d-none');
             $('#courseEditLoader').addClass('d-none');
         })
+}
+
+
+$('#courseUpdateConfirmBtn').click(function () {
+
+    let courseId = $('#courseEditId').html();
+    let courseName = $('#courseNameUpdateId').val();
+    let courseDesc = $('#courseDesUpdateId').val();
+    let courseFee = $('#courseFeeUpdateId').val();
+    let courseEnroll = $('#courseEnrollUpdateId').val();
+    let courseClass = $('#courseClassUpdateId').val();
+    let courseLink = $('#courseLinkUpdateId').val();
+    let courseImg = $('#courseImgUpdateId').val();
+    courseUpdate(courseId, courseName, courseDesc, courseFee, courseEnroll, courseClass, courseLink, courseImg);
+})
+
+
+// Course Update
+function courseUpdate(courseId, courseName, courseDesc, courseFee, courseEnroll, courseClass, courseLink, courseImg) {
+
+    if (courseName.length===0){
+        toastr.error('Service Name is Empty');
+    }
+    else if (courseDesc.length===0){
+        toastr.error('Service Description is Empty');
+    }
+    else if (courseFee.length===0){
+        toastr.error('Course Fee is Empty');
+    }
+    else if (courseEnroll.length===0){
+        toastr.error('Course Enroll is Empty');
+    }
+    else if (courseClass.length===0){
+        toastr.error('Course Class is Empty');
+    }
+    else if (courseLink.length===0){
+        toastr.error('Course Link is Empty');
+    }
+    else if (courseImg.length===0){
+        toastr.error('Course Image is Empty');
+    }
+    else {
+        $('#courseUpdateConfirmBtn').html("<div class='spinner-border spinner-border-sm' role='status'></div>");//animation.......
+        axios.post('/coursesUpdate', {
+            id: courseId,
+            course_name: courseName,
+            course_description: courseDesc,
+            course_fee: courseFee,
+            course_total_enroll: courseEnroll,
+            course_total_class: courseClass,
+            course_link: courseLink,
+            course_image: courseImg,
+        })
+            .then(function(response) {
+                $('#courseUpdateConfirmBtn').html("save");
+                if (response.status===200){
+                    if (response.data === 1) {
+                        $('#updateCourseModal').modal('hide');
+                        toastr.success('Update Success');
+                        getCoursesData();
+                    } else {
+                        $('#updateCourseModal').modal('hide');
+                        toastr.error('Update Fail');
+                        getCoursesData();
+                    }
+                }
+                else {
+                    $('#updateCourseModal').modal('hide');
+                    toastr.error('Something Went Wrong!');
+                }
+
+            })
+            .catch(function(error) {
+                $('#updateCourseModal').modal('hide');
+                toastr.error('Something Went Wrong!');
+            })
+    }
+
 }
 

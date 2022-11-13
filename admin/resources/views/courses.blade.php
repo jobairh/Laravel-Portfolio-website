@@ -14,7 +14,6 @@
                         <th class="th-sm">Course Fee</th>
                         <th class="th-sm">Course Class</th>
                         <th class="th-sm">Course Enroll</th>
-                        <th class="th-sm">Details</th>
                         <th class="th-sm">Edit</th>
                         <th class="th-sm">Delete</th>
                     </tr>
@@ -120,7 +119,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Cancel</button>
-                    <button  id="courseAddConfirmBtn" type="button" class="btn btn-sm btn-danger">Save</button>
+                    <button  id="courseUpdateConfirmBtn" type="button" class="btn btn-sm btn-danger">Save</button>
                 </div>
             </div>
         </div>
