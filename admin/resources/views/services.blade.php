@@ -6,7 +6,7 @@
 
                 <button id="addNewBtnId" class="btn btn-sm btn-danger my-3">Add New</button>
 
-                <table id="" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <table id="serviceDataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                     <tr>
                         <th class="th-sm">Image</th>
@@ -49,7 +49,7 @@
             <div class="modal-content">
                 <div class="modal-body p-3 text-center">
                     <h5 class="mt-4">Do you want to Delete?</h5>
-                    <h5 id="serviceDeleteId" class="mt-4"></h5>
+                    <h5 id="serviceDeleteId" class="mt-4 d-none"></h5>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">no</button>
@@ -59,12 +59,22 @@
         </div>
     </div>
 
+
+
     <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-body p-5 text-center">
 
-                    <h5 id="serviceEditId" class="mt-4"></h5>
+                <div class="modal-header">
+                    <h5 class="modal-title">Update Service</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body p-4 text-center">
+
+                    <h5 id="serviceEditId" class="mt-4 d-none"></h5>
 
                     <div id="serviceEditForm" class="d-none w-100">
 
@@ -98,14 +108,24 @@
         </div>
     </div>
 
+
+
     <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-body p-5 text-center">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Service</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body p-4 text-center">
 
                     <div id="serviceAddForm" class="w-100">
 
-                        <h6 class="mb-4 fa bold">Add New Service</h6>
+{{--                        <h6 class="mb-4 fa bold">Add New Service</h6>--}}
 
                         <div class="form-outline mb-4 text-left">
                             <label class="form-label" for="form5Example1">Service Name:</label>
@@ -155,6 +175,7 @@
                         $('#mainDiv').removeClass('d-none');
                         $('#loaderDiv').addClass('d-none');
 
+                        $('#serviceDataTable').DataTable().destroy();
                         $('#service_table').empty();
 
                         let jsonData = response.data;
@@ -185,6 +206,10 @@
                             serviceUpdateDetails(id);
                             $('#editModal').modal('show');
                         })
+
+                        // Data Table method
+                        $('#serviceDataTable').DataTable({"order":false});
+                        $('.dataTables_length').addClass('bs-select');
 
 
                     } else {

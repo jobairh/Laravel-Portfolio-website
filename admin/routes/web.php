@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\VisitorController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\ProjectController;
 
 
 Route::get('/',[HomeController::class,'index'])->name('/');
@@ -20,6 +21,7 @@ Route::post('/serviceDetails',[ServiceController::class,'getServiceDetails'])->n
 Route::post('/serviceUpdate',[ServiceController::class,'getServiceUpdate'])->name('serviceUpdate');
 Route::post('/serviceAdd',[ServiceController::class,'getServiceAdd'])->name('serviceAdd');
 
+
 // Admin Panel Courses Management
 Route::get('/courses',[CoursesController::class,'coursesIndex'])->name('courses');
 Route::get('/getCoursesData',[CoursesController::class,'getCoursesData'])->name('getCoursesData');
@@ -27,4 +29,13 @@ Route::post('/coursesDelete',[CoursesController::class,'getCoursesDelete'])->nam
 Route::post('/coursesDetails',[CoursesController::class,'getCoursesDetails'])->name('coursesDetails');
 Route::post('/coursesUpdate',[CoursesController::class,'getCoursesUpdate'])->name('coursesUpdate');
 Route::post('/coursesAdd',[CoursesController::class,'getCoursesAdd'])->name('coursesAdd');
+
+
+// Admin Panel Project Management
+Route::get('/projects',[ProjectController::class,'projectsIndex'])->name('projects');
+Route::get('/getProjectsData',[ProjectController::class,'getProjectsData'])->name('getProjectsData');
+Route::post('/projectsDelete',[ProjectController::class,'getProjectsDelete'])->name('projectsDelete');
+Route::post('/projectsDetails',[ProjectController::class,'getProjectsDetails'])->name('projectsDetails');
+Route::post('/projectsUpdate',[ProjectController::class,'getProjectsUpdate'])->name('projectsUpdate');
+Route::post('/projectsAdd',[ProjectController::class,'getProjectsAdd'])->name('projectsAdd');
 
