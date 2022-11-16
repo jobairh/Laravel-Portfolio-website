@@ -6,6 +6,8 @@ use App\Http\Controllers\VisitorController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ReviewController;
 
 
 Route::get('/',[HomeController::class,'index'])->name('/');
@@ -38,4 +40,20 @@ Route::post('/projectsDelete',[ProjectController::class,'getProjectsDelete'])->n
 Route::post('/projectsDetails',[ProjectController::class,'getProjectsDetails'])->name('projectsDetails');
 Route::post('/projectsUpdate',[ProjectController::class,'getProjectsUpdate'])->name('projectsUpdate');
 Route::post('/projectsAdd',[ProjectController::class,'getProjectsAdd'])->name('projectsAdd');
+
+
+// Admin Panel Contact Management
+Route::get('/contacts',[ContactController::class,'contactsIndex'])->name('contacts');
+Route::get('/contactsData',[ContactController::class,'getContactsData'])->name('contactsData');
+Route::post('/contactsDelete',[ContactController::class,'getContactsDelete'])->name('contactsDelete');
+
+
+// Admin Panel Review Management
+Route::get('/reviews',[ReviewController::class,'reviewsIndex'])->name('reviews');
+Route::get('/reviewsData',[ReviewController::class,'getReviewsData'])->name('reviewsData');
+Route::post('/reviewsDelete',[ReviewController::class,'getReviewsDelete'])->name('reviewsDelete');
+Route::post('/reviewsDetails',[ReviewController::class,'getReviewsDetails'])->name('reviewsDetails');
+Route::post('/reviewsUpdate',[ReviewController::class,'getReviewsUpdate'])->name('reviewsUpdate');
+Route::post('/reviewsAdd',[ReviewController::class,'getReviewsAdd'])->name('reviewsAdd');
+
 

@@ -22,6 +22,8 @@
 
 @yield('content')
 
+@include('layout.footer')
+
 
 <script type="text/javascript" src="{{ asset('frontEndAsset') }}/js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="{{ asset('frontEndAsset') }}/js/popper.min.js"></script>

@@ -230,16 +230,16 @@
         function projectAdd(projectName, projectDes, projectLink, projectImg) {
 
             if (projectName.length===0){
-                toastr.error('Course Name is Empty');
+                toastr.error('Project Name is Empty');
             }
             else if (projectDes.length===0){
-                toastr.error('Course Description is Empty');
+                toastr.error('Project Description is Empty');
             }
             else if (projectLink.length===0){
-                toastr.error('Course Fee is Empty');
+                toastr.error('Project Fee is Empty');
             }
             else if (projectImg.length===0){
-                toastr.error('Course Enroll is Empty');
+                toastr.error('Project Image is Empty');
             }
 
             else {
