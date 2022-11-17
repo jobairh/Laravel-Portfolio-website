@@ -8,6 +8,7 @@ use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\LoginController;
 
 
 Route::get('/',[HomeController::class,'index'])->name('/');
@@ -55,5 +56,10 @@ Route::post('/reviewsDelete',[ReviewController::class,'getReviewsDelete'])->name
 Route::post('/reviewsDetails',[ReviewController::class,'getReviewsDetails'])->name('reviewsDetails');
 Route::post('/reviewsUpdate',[ReviewController::class,'getReviewsUpdate'])->name('reviewsUpdate');
 Route::post('/reviewsAdd',[ReviewController::class,'getReviewsAdd'])->name('reviewsAdd');
+
+
+// login panel
+Route::get('/login',[LoginController::class,'loginIndex'])->name('login');
+Route::post('/onLogin',[LoginController::class,'onLogin'])->name('onLogin');
 
 

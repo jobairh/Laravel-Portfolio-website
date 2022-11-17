@@ -1,4 +1,7 @@
 @extends('layout.app')
+
+@section('title','Visitor')
+
 @section('content')
     <div class="container">
         <div class="row">
