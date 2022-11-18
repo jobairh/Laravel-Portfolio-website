@@ -8,7 +8,7 @@
                     <li class="nav-item mt-3">ADMIN</li>
                 </ul>
                 <ul class="navbar-nav my-lg-0">
-                    <li class="nav-item"><a href="" class="btn btn-sm btn-danger">Logout</a></li>
+                    <li class="nav-item"><a href="{{ route('logout') }}" class="btn btn-sm btn-danger">Logout</a></li>
                 </ul>
             </div>
         </nav>
@@ -25,6 +25,7 @@
                     <li> <a href="{{ route('projects') }}" ><span> <i class="fas fa-project-diagram"></i> </span><span class="hide-menu">Projects</span></a></li>
                     <li> <a href="{{ route('contacts') }}" ><span> <i class="fas fa-mobile-alt"></i> </span><span class="hide-menu">Contacts</span></a></li>
                     <li> <a href="{{ route('reviews') }}" ><span> <i class="fas fa-medal"></i> </span><span class="hide-menu">Reviews</span></a></li>
+                    <li> <a href="{{ route('photo') }}" ><span> <i class="fas fa-images"></i> </span><span class="hide-menu">Photo Gallery</span></a></li>
                 </ul>
             </nav>
         </div>

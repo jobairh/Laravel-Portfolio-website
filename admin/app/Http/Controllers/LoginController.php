@@ -11,13 +11,18 @@ class LoginController extends Controller
         return view('login');
     }
 
-    public function onLogin(Request $request){
+    public function onLogout(Request $request){
+        $request->session()->flush();
+        return redirect('/login');
+    }
 
+    public function onLogin(Request $request){
         $user =$request->input('user');
         $pass =$request->input('pass');
         $countValue=AdminModelTable::where('user_name','=',$user)->where('password','=',$pass)->count();
 
         if ($countValue==1){
+            $request->session()->put('user',$user);
             return 1;
         }
         else{
