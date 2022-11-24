@@ -6,7 +6,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-12 p-5">
+            <div class="col-md-12 pt-4">
                 <button data-toggle="modal" data-target="#photoModal" id="addNewPhotoBtnId" class="btn btn-sm btn-danger my-3">Add New</button>
             </div>
         </div>
@@ -14,9 +14,11 @@
 
 
     <div class="container">
-        <div class="row photoRow">
+        <div class="row photoRow ml-1">
 
         </div>
+        <button class="btn btn-sm btn-primary" id="loadMoreBtn">Load More</button>
+
     </div>
 
 
@@ -76,6 +78,8 @@
 
                         $('#photoModal').modal('hide');
                         toastr.success('Photo Upload Success');
+                        window.location.href="/photo";
+
                     }
                     else{
                         $('#photoModal').modal('hide');
@@ -97,14 +101,82 @@
                 .then(function (response) {
 
                     $.each(response.data, function (i, item) {
-                        $("<div class='col-md-3 p-1'>").html(
-                            "<img class='imgOnRow' src="+item['location']+">"
+                        $("<div class='col-md-4 p-1'>").html(
+                            "<img data-id="+ item['id'] +" class='imgOnRow' src="+item['location']+">"+
+                            "<button data-id="+ item['id'] +" data-photo="+ item['location'] +" class='btn deletePhoto btn-sm'>Delete</button>"
 
                         ).appendTo('.photoRow');
                     });
+
+                    $('.deletePhoto').on('click', function (event) {
+
+                        let id = $(this).data('id');
+                        let photo = $(this).data('photo');
+                        photoDelete(photo, id)
+
+                        event.preventDefault();
+                    })
+
             })
+
                 .catch(function (error) {
 
+            })
+        }
+
+        let imgId = 0;
+        function loadById(firstImgId, loadMoreBtn){
+
+            imgId = imgId+3;
+            let photoId = firstImgId+imgId;
+
+            let url = "/photoJsonId/"+photoId;
+            loadMoreBtn.html("<div class='spinner-border spinner-border-sm' role='status'></div>");
+            axios.get(url)
+                .then(function (response) {
+                    loadMoreBtn.html("Load More");
+                    $.each(response.data, function (i, item) {
+                        $("<div class='col-md-4 p-1'>").html(
+                            "<img data-id="+ item['id'] +" class='imgOnRow' src="+item['location']+">"+
+                            "<button data-id="+ item['id'] +" data-photo="+ item['location'] +" class='btn btn-sm'>Delete</button>"
+
+                        ).appendTo('.photoRow');
+                    });
+                })
+                .catch(function (error) {
+
+                })
+
+        }
+
+
+        $('#loadMoreBtn').on('click', function () {
+
+            let loadMoreBtn = $(this);
+            let firstImgId = $(this).closest('div').find('img').data('id');
+            loadById(firstImgId, loadMoreBtn);
+        })
+
+
+        function photoDelete(oldPhotoUrl, id) {
+
+            let Url = "/photoDelete";
+            let myFormData = new FormData();
+            myFormData.append('oldPhotoUrl', oldPhotoUrl);
+            myFormData.append('id', id);
+            axios.post(Url, myFormData)
+                .then(function (response) {
+
+                    if (response.status===200 && response.data===1){
+                        toastr.success('Photo Delete Success');
+                        $('.photoRow').empty();
+                        loadPhoto();
+                    }
+                    else{
+                        toastr.error('Delete Fail Try Again');
+                    }
+            }).catch(function () {
+                toastr.error('Delete Fail Try Again');
             })
         }
 

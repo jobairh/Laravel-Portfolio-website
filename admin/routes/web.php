@@ -69,3 +69,5 @@ Route::get('/logout',[LoginController::class,'onLogout'])->name('logout');
 Route::get('/photo',[PhotoController::class,'photoIndex'])->name('photo')->middleware('loginCheck');
 Route::post('/photoUpload',[PhotoController::class,'photoUpload'])->name('photoUpload')->middleware('loginCheck');
 Route::get('/photoJson',[PhotoController::class,'photoJson'])->name('photoJson')->middleware('loginCheck');
+Route::get('/photoJsonId/{id}',[PhotoController::class,'photoJsonById'])->name('photoJsonId')->middleware('loginCheck');
+Route::post('/photoDelete',[PhotoController::class,'photoDelete'])->name('photoDelete')->middleware('loginCheck');
